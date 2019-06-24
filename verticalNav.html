@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="screen-orientation" content="portrait">
+  <meta name="full-screen" content="no">
+  <meta name="x5-orientation" content="portrait">
+  <meta name="x5-fullscreen" content="false">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="format-detection" content="telephone=no"> 
+  <title>纵向导航-点击居中</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/layout.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/4.5.0/css/swiper.min.css">
+  <script type="text/javascript">
+    (function(){
+        setRem();
+        window.addEventListener('orientationchange' in window?"orientationchange":"resize",setRem);
+        function setRem(){
+            var html = document.getElementsByTagName('html')[0];
+            var pageWidth = html.getBoundingClientRect().width;
+            html.style.fontSize = pageWidth/15+'px';
+        }
+    })();
+  </script>
+</head>
+<body>
+  <div id="vertical-content" class="content" v-cloak>
+    <header>头部</header>
+    <div class="classify-list">
+        <div class="category-wrapper clear">
+          <div class="menu-category">
+            <div class="swiper-container nav-list">
+                <div class="swiper-wrapper">
+                <div v-for = "(slide, index) in classifyLeft" :key = "slide.id"
+                :class="['swiper-slide slide', {sidehigh: index === curIndex}]" @click="changeTab (index, $event)">
+                    {{slide.title}}
+                </div>
+                </div>
+            </div>
+          </div>
+          <div class="category-list">
+            <ul class="food-list">
+                <li v-for="item of classifyRight" :key="item.id">
+                <router-link :to="{name: 'goodsdetail', query: {id: item.id, cid: curIndex}}">
+                    <!-- <img :src="item.url"> -->
+                    <p>{{item.title}}</p>
+                </router-link>
+                </li>
+            </ul>
+          </div>
+        </div>
+    </div>
+    <footer>底部</footer>
+  </div>
+</body>
+<script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+<!-- <script src="https://cdn.bootcss.com/qs/6.7.0/qs.min.js"></script> -->
+<script src="https://cdn.bootcss.com/Swiper/4.5.0/js/swiper.min.js"></script>
+<script>
+  new Vue({
+    el: '#vertical-content',
+    data: {
+      classifyLeft: [
+        {id: 1, title: '中式快餐'},
+        {id: 2, title: '饮品'},
+        {id: 3, title: '小吃'},
+        {id: 4, title: '甜品烘焙'},
+        {id: 5, title: '西式快餐'},
+        {id: 6, title: '海鲜'},
+        {id: 7, title: '烤肉'},
+        {id: 8, title: '韩餐'},
+        {id: 9, title: '小吃'},
+        {id: 10, title: '甜品烘焙'},
+        {id: 11, title: '西式快餐'},
+        {id: 12, title: '甜品烘焙'},
+        {id: 13, title: '韩餐'},
+        {id: 14, title: '中式快餐'},
+        {id: 15, title: '面条'},
+        {id: 16, title: '中式快餐'},
+        {id: 17, title: '甜品烘焙'},
+      ],
+      classifyRight: [
+        {id: 1, title: '奇异果', url: '/static/images/occupy/one@2x.png'},
+        {id: 2, title: '车厘子', url: '/static/images/occupy/two@2x.png'},
+        {id: 3, title: '苹果', url: '/static/images/occupy/three@2x.png'},
+        {id: 4, title: '梨', url: '/static/images/occupy/four@2x.png'},
+        {id: 5, title: '香蕉', url: '/static/images/occupy/five@2x.png'},
+        {id: 6, title: '西瓜', url: '/static/images/occupy/six@2x.png'},
+        {id: 7, title: '牛油果', url: '/static/images/occupy/eleven@2x.png'},
+        {id: 8, title: '凤梨', url: '/static/images/occupy/eight@2x.png'},
+        {id: 9, title: '榴莲', url: '/static/images/occupy/twelve@2x.png'},
+      ],
+      tmp: [
+        {id: 1,
+        list: [
+            {id: 1, title: '奇异果', url: '/static/images/occupy/one@2x.png'},
+            {id: 2, title: '车厘子', url: '/static/images/occupy/two@2x.png'},
+            {id: 3, title: '苹果', url: '/static/images/occupy/three@2x.png'},
+            {id: 4, title: '梨', url: '/static/images/occupy/four@2x.png'},
+            {id: 5, title: '香蕉', url: '/static/images/occupy/five@2x.png'},
+            {id: 6, title: '西瓜', url: '/static/images/occupy/six@2x.png'},
+            {id: 7, title: '牛油果', url: '/static/images/occupy/eleven@2x.png'},
+            {id: 8, title: '凤梨', url: '/static/images/occupy/eight@2x.png'},
+            {id: 9, title: '榴莲', url: '/static/images/occupy/twelve@2x.png'}
+        ]
+        },
+        {id: 2,
+        list: [
+            {id: 1, title: '米', url: '/static/images/occupy/one@2x.png'},
+            {id: 2, title: '面', url: '/static/images/occupy/two@2x.png'},
+            {id: 3, title: '杂粮', url: '/static/images/occupy/three@2x.png'},
+            {id: 4, title: '油', url: '/static/images/occupy/four@2x.png'},
+            {id: 5, title: '干货', url: '/static/images/occupy/five@2x.png'},
+            {id: 6, title: '调味料', url: '/static/images/occupy/six@2x.png'},
+            {id: 7, title: '果干/零食', url: '/static/images/occupy/eleven@2x.png'},
+            {id: 8, title: '凤梨', url: '/static/images/occupy/eight@2x.png'},
+            {id: 9, title: '榴莲', url: '/static/images/occupy/twelve@2x.png'}
+        ]
+        },
+        {id: 3,
+        list: [
+            {id: 1, title: '汉堡', url: '/static/images/occupy/one@2x.png'},
+            {id: 2, title: '牛排', url: '/static/images/occupy/two@2x.png'}
+        ]
+        }
+    ], 
+      curIndex: 0,
+      mySwiper: false,
+      swiperWidth: '',
+      maxTranslate: '',
+      maxWidth: '',
+      position: ''
+    },
+    mounted () {
+        var that = this;
+        that.mySwiper = new Swiper('.nav-list', {
+        direction: 'vertical',
+        slidesPerView: 'auto',
+        observeParents: true,
+        observer: true
+        });
+        that.swiperHeight = that.mySwiper.$el[0].offsetHeight
+        that.maxTranslate = that.mySwiper.maxTranslate();
+        that.maxHeight = -that.maxTranslate + that.swiperHeight / 2
+        that.mySwiper.on('click', function(swiper) {
+        if(that.curIndex === this.clickedIndex){
+            return;
+        }
+        that.curIndex = this.clickedIndex;
+        var slide, slideTop, slideHeight, slideCenter, nowTlanslate;
+        slideTop = that.position;
+        slideHeight = swiper.target.offsetHeight;
+        slideCenter = slideTop + slideHeight / 2;
+        if (slideCenter <= that.swiperHeight / 2) {
+            that.mySwiper.setTransition(300)
+            that.mySwiper.setTranslate(0)
+        } else if (slideCenter >= that.maxHeight) {
+            that.mySwiper.setTransition(300)
+            that.mySwiper.setTranslate(that.maxTranslate)
+        } else {
+            that.mySwiper.setTransition(300)
+            nowTlanslate = slideCenter - that.swiperHeight / 2
+            that.mySwiper.setTranslate(-nowTlanslate)                    
+        }
+        })
+    },
+    methods: {
+      changeTab (index, $event) {
+        this.position = $event.path[0].offsetTop;
+        var id = index + 1
+        for (var i=0;i < this.tmp.length;i++) {
+          if (this.tmp[i].id === id) {
+            this.classifyRight = this.tmp[i].list
+            return false
+          }else{
+            this.classifyRight = []
+          }
+        }
+      }
+    }
+  })
+</script>
+</html>

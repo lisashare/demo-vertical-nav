@@ -1,0 +1,90 @@
+@rem: 50rem;
+.content{
+  padding-top: 92/@rem;
+}
+header, footer{
+  position: fixed;
+  right: 0;left: 0;
+  height: 92/@rem;
+  line-height: 92/@rem;
+  text-align: center;
+}
+header{
+  top: 0;
+}
+footer{
+  bottom: 0;
+}
+.menu-category{
+    box-sizing: border-box;
+    position: fixed;
+    left: 0;
+    top: 88/@rem;
+    width: 200/@rem;
+    bottom: 92/@rem;
+    background: #f5f5f5;
+    z-index: 1;
+    .nav-list{
+      height: 100%;
+    }
+    .slide{
+      width: 200/@rem;
+      height: 100/@rem;
+      line-height: 100/@rem;
+      font-size: 30/@rem;
+      color: #333;
+      text-align: center;
+    }
+    .sidehigh{
+      font-weight: 700;
+      color: #f85100;
+      background-color: #fff;
+    }
+    .sidehigh:before{
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 6/@rem;
+      height: 100/@rem;
+      background: -webkit-linear-gradient(left, #f85100, #fe8645); 
+      background: -o-linear-gradient(right, #f85100, #fe8645); 
+      background: -moz-linear-gradient(right, #f85100, #fe8645); 
+      background: linear-gradient(to right, #f85100 , #fe8645);
+    }
+  }
+  .category-list{
+      margin-left: 200/@rem;
+      padding-bottom: 28/@rem;
+      height: 100%;
+      overflow: hidden;
+    .food-list{
+      height: 100%;
+      overflow-y: scroll;
+    }
+    li{
+        float: left;
+        margin: 30/@rem 35/@rem 16/@rem;
+      a{
+        width: 110/@rem;
+        float: left; 
+      }
+      img{
+        width: 110/@rem;
+        height: 100/@rem;
+      }
+      p{
+        width: 100%;
+        line-height: 40/@rem;
+        font-size: 24/@rem;
+        text-align: center;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        word-break: break-all;
+        word-wrap: break-word;
+      }
+    }
+  }  
+  
